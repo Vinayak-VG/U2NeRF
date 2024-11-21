@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>U2NeRF</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    </head>
+    <body>
+        <div class="container" id="main">
+            <div class="row">
+                <h2 class="col-md-12 text-center">
+                    U2NeRF: Unifying Unsupervised Underwater Image <br> Restoration and Neural Radiance Fields
+                    <small>
+                    </small>
+                </h2>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="#">
+                            Manoj S<sup>1*</sup>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                            Vinayak Gupta<sup>1*</sup>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                            Mukund Varma T<sup>1*</sup>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.ee.iitm.ac.in/kmitra/">
+                            Kaushik Mitra<sup>1</sup>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <sup>1</sup>Indian Institute of Technology Madras
+                        </li>
+                        <br>
+                        * denotes equal contribution
+                        <br>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="U2NeRF_preprint_2022.pdf">
+                                <image src="assets/pdf.png" style="height: 80px!important;">
+                                <h4><strong>Paper</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/VITA-Group/GNT">
+                                <image src="assets/github.png" style="height: 80px!important;">
+                                <h4><strong>Code</strong></h4>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div id="slider">
+                        <div class="card ">
+                            <div class="comparison-slider-wrapper">
+                                <div id="ba-slider2" class="comparison-slider">
+                                        <div class="overlay"><h3 style="float:right; color: white; padding-right: 20px;">U2NeRF</h3></div>
+                                        <img src="assets/debris_u2nerf.jpeg"/>
+                                    <div class="resize">
+                                        <div class="overlay"><h3 style="float:left; color: white; padding-left: 20px;">Original</h3></div>
+                                        <img src="assets/debris_uw.jpeg" style="all:unset;"/>
+                                    </div>
+                                    <div class="divider"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card ">
+                            <div class="comparison-slider-wrapper">
+                                <div id="ba-slider3" class="comparison-slider">
+                                        <div class="overlay"><h3 style="float:right; color: white; padding-right: 20px;">U2NeRF</h3></div>
+                                        <img src="assets/dwarka26_u2nerf.jpeg"/>
+                                    <div class="resize">
+                                        <div class="overlay"><h3 style="float:left; color: white; padding-left: 20px;">Original</h3></div>
+                                        <img src="assets/dwarka26_uw.jpeg" style="all:unset;"/>
+                                    </div>
+                                    <div class="divider"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card ">
+                            <div class="comparison-slider-wrapper">
+                                <div id="ba-slider4" class="comparison-slider">
+                                        <div class="overlay"><h3 style="float:right; color: white; padding-right: 20px;">U2NeRF</h3></div>
+                                        <img src="assets/dwarka7_u2nerf.jpeg"/>
+                                    <div class="resize">
+                                        <div class="overlay"><h3 style="float:left; color: white; padding-left: 20px;">Original</h3></div>
+                                        <img src="assets/dwarka7_uw.jpeg" style="all:unset;"/>
+                                    </div>
+                                    <div class="divider"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card ">
+                            <div class="comparison-slider-wrapper">
+                                <div id="ba-slider5" class="comparison-slider">
+                                        <div class="overlay"><h3 style="float:right; color: white; padding-right: 20px;">U2NeRF</h3></div>
+                                        <img src="assets/dwarka261_u2nerf.jpeg"/>
+                                    <div class="resize">
+                                        <div class="overlay"><h3 style="float:left; color: white; padding-left: 20px;">Original</h3></div>
+                                        <img src="assets/dwarka261_uw.jpeg" style="all:unset;"/>
+                                    </div>
+                                    <div class="divider"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card ">
+                            <div class="comparison-slider-wrapper">
+                                <div id="ba-slider6" class="comparison-slider">
+                                        <div class="overlay"><h3 style="float:right; color: white; padding-right: 20px;">U2NeRF</h3></div>
+                                        <img src="assets/dwarka13_u2nerf.jpeg"/>
+                                    <div class="resize">
+                                        <div class="overlay"><h3 style="float:left; color: white; padding-left: 20px;">Original</h3></div>
+                                        <img src="assets/dwarka13_uw.jpeg" style="all:unset;"/>
+                                    </div>
+                                    <div class="divider"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="comparison-slider-wrapper">
+                                <div id="ba-slider1" class="comparison-slider">
+                                        <div class="overlay"><h3 style="float:right; color: white; padding-right: 20px;">U2NeRF</h3></div>
+                                        <img src="assets/starfish_u2nerf.jpeg"/>
+                                    <div class="resize">
+                                        <div class="overlay"><h3 style="float:left; color: white; padding-left: 20px;">Original</h3></div>
+                                        <img src="assets/starfish_uw.jpeg" style="all:unset;"/>
+                                    </div>
+                                    <div class="divider"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 col-md-offset-2">
+                    <p class="text-center">
+                        Rendered images on the UVS dataset using U2NeRF
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h3>
+                        Abstract
+                    </h3>
+                    <p class="text-justify">
+                        Underwater images suffer from colour shifts, low contrast, and haziness due to light absorption, refraction, scattering and restoring these images has warranted much attention.
+                        In this work, we present <i>Unsupervised Underwater Neural Radiance Field</i> (<b>U2NeRF</b>), a transformer-based architecture that learns to render and restore novel views conditioned on multi-view geometry simultaneously. 
+                        Due to the absence of supervision, we attempt to implicitly bake restoring capabilities onto the NeRF pipeline and disentangle the predicted color into several components - scene radiance, direct transmission map, backscatter transmission map, and global background light, and when combined reconstruct the underwater image in a self-supervised manner. 
+                        In addition, we release an <i>Underwater View Synthesis</i> (<b>UVS</b>) dataset consisting of 12 underwater scenes, containing both synthetically-generated and real-world data. 
+                        Our experiments demonstrate that when optimized on a single scene, U2NeRF outperforms several baselines by as much as LPIPS 11%&#8595, UIQM 5%&#8593, UCIQE 4%&#8593 (on average) and showcases improved rendering and restoration capabilities. 
+                        The multi-view inductive prior enables U2NeRF to be trained on multiple scenes, and successfully transfer to unseen scenes with or without per-scene fine-tuning. 
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <center>
+                        <image src="assets/arch.png" class="img-responsive" alt="overview" width="100%" style="max-height: 450px;margin:auto;">
+                    </center>
+                </div>
+                <div class="col-md-8 col-md-offset-2">
+                    <p class="text-center">
+                        Overview of U2NeRF
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h3>
+                        Single Scene Rendering Results
+                    </h3>
+                    <image src="assets/singlescene.png" width="100%">
+                </div>
+                <div class="col-md-8 col-md-offset-2">
+                    <p class="text-center">
+                        Qualitative comparison for single-scene rendering. 
+                        U2NeRF recovers and restores underwater images with greater quality, comparable and even better than non-rendering baselines UIESS, UPIFM. 
+                    </p>
+                </div>
+                <div class="col-md-8 col-md-offset-2">
+                    <h3>
+                        Physical Interpretation of U2NeRF
+                    </h3>
+                    <image src="assets/components.png" width="100%">
+                </div>
+                <div class="col-md-8 col-md-offset-2">
+                    <p class="text-center">
+                        Visualisations of the predicted image components (scene radiance, transmission maps, global light).
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h3>
+                        Citation
+                    </h3>
+                    <pre>
+                    </pre>
+<!--                     <div class="form-group col-md-10 col-md-offset-1">
+                        <textarea id="bibtex" class="form-control" readonly>
+                        @article{varma2022gnt, <br>
+                          title={Is Attention All NeRF Needs?}, <br>
+                          author={T, Mukund Varma and Wang, Peihao and Chen, Xuxi and Chen, Tianlong and Venugopalan, Subhashini and Wang, Zhangyang}, <br>
+                          journal={arXiv preprint arXiv:2207.13298}, <br>
+                          year={2022} <br>
+                        }
+                        </textarea>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </body>
+    <footer>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <p class="text-center">
+                    This website is adapted from <a href="http://mgharbi.com/">Michaël Gharbi</a>.
+                </p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        $(document).ready(function () {
+            baSlider("#ba-slider1");
+        });
+        $(document).ready(function () {
+            baSlider("#ba-slider2");
+        });
+        $(document).ready(function () {
+            baSlider("#ba-slider3");
+        });
+        $(document).ready(function () {
+            baSlider("#ba-slider4");
+        });
+        $(document).ready(function () {
+            baSlider("#ba-slider5");
+        });
+        $(document).ready(function () {
+            baSlider("#ba-slider6");
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
+    <script>
+        bulmaCarousel.attach('#slider', {
+            slidesToScroll: 1,
+            slidesToShow: 1,
+            infinite: true,
+            autoplay: true,
+        });
+    </script>
+</html>
